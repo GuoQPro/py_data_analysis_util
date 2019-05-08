@@ -2,7 +2,7 @@
 #import matplotlib.image as mlimg;
 import matplotlib.pyplot as plt;
 import math;
-from PIL import Image;
+from PIL import Image, ImageDraw;
 import py_util;
 
 #
@@ -25,6 +25,11 @@ def rotate_img(img, angle):
 
 def thumbnailize_img(img, width, height):
     img.thumbnail((width, height), Image.ANTIALIAS);
+
+def mask_regioin(img, polygon, outline_color, fill_color_RGBA):
+    draw = ImageDraw.Draw(img, "RGBA");
+    draw.polygon(polygon, outline = outline_color, fill = fill_color_RGBA);
+    return img;
 
 def show_images(img_list, row_num, col_num, title_list = [], show_axe = True):
     fig, axes = plt.subplots(row_num, col_num, squeeze = False)#, figsize = (5, 5))
