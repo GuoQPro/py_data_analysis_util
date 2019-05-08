@@ -3,6 +3,7 @@
 import matplotlib.pyplot as plt;
 import math;
 from PIL import Image, ImageDraw;
+from zipfile import ZipFile;
 
 #
 #
@@ -15,6 +16,20 @@ def load_img(file_path):
         return img;
 
     return None;
+
+def load_img_from_zip(zip_file_full_name):
+    img_list = [];
+    with ZipFile(zip_file_full_name) as archive:
+        for entry in archive.infolist():
+            with archive.open(entry) as file:
+                try:
+                    img = Image.open(file);
+                except IOError as err:
+                    print("load_img_from_zip failed: %s" % err);
+                else:
+                    img_list.append(img);
+
+    return img_list;
 
 def resize_img(img, width, height):
     return img.resize((width, height));
@@ -45,6 +60,7 @@ def show_images(img_list, row_num, col_num, title_list = [], show_axe = True):
                 axe.set_title(title_list[index])
             index += 1
             if index >= img_num:
+                plt.show()
                 return
 
 def calc_row_col(total_num):
