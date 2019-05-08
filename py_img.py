@@ -3,7 +3,6 @@
 import matplotlib.pyplot as plt;
 import math;
 from PIL import Image, ImageDraw;
-import py_util;
 
 #
 #
