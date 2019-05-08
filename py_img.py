@@ -60,11 +60,3 @@ def calc_row_col(total_num):
             row = row + 1;
 
     return row, col;
-
-##
-# Parse image materials
-# Given that all images with the same type are stored in the same folder with the type name.
-##
-
-def parse_img_folder(path, max_width, max_height):
-    file_list = traverse_folder(path);
