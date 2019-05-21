@@ -6,7 +6,7 @@
 def set_barplot_value(axis, value_list, value_format, value_color):
     for i, v in enumerate(value_list):
         bar_label = value_format % v;
-        axis.text(i, v + 2, bar_label, color = value_color, va = 'center');
+        axis.text(i, v + 1, bar_label, color = value_color, va = 'center');
 
 #######################################################################################################
 # For some specific version of tensorflow and keras, this funcion should be called prior to  
