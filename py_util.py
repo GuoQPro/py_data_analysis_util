@@ -2,6 +2,7 @@
 import math;
 from sklearn.externals import joblib;
 import os;
+import datetime, calendar;
 
 def isstring(value):
     return isinstance(value, str);
@@ -40,3 +41,19 @@ def load_object(filename):
         return joblib.load(filename);
     else:
         print("cannot find file %s" % filename);
+
+#######################################################################################################
+# convert a date string with format "mm/dd/yy" to the nth day of the given year.
+#######################################################################################################
+def convert_datestring_to_day_num(datestring, base_y = 19):
+    sec = datestring.split("/")
+    y = int(sec[2])
+    m = int(sec[0])
+    d = int(sec[1])
+    date = datetime.datetime(y, m, d);
+    day_num = int(date.strftime("%j"));
+
+    for year in range(base_y, y):
+        day_num += (365 + (1 if calendar.isleap(year) else 0));
+
+    return day_num;
