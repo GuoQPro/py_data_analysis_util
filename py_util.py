@@ -3,6 +3,7 @@ import math;
 from sklearn.externals import joblib;
 import os;
 import datetime, calendar;
+import platform;
 
 def isstring(value):
     return isinstance(value, str);
@@ -57,3 +58,6 @@ def convert_datestring_to_day_num(datestring, base_y = 19):
         day_num += (365 + (1 if calendar.isleap(year) else 0));
 
     return day_num;
+
+def is_os_win():
+    return platform.system() == "Windows";
