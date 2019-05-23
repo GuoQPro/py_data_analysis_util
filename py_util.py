@@ -4,6 +4,7 @@ from sklearn.externals import joblib;
 import os;
 import datetime, calendar;
 import platform;
+import pycountry;
 
 def isstring(value):
     return isinstance(value, str);
@@ -59,5 +60,22 @@ def convert_datestring_to_day_num(datestring, base_y = 19):
 
     return day_num;
 
+#######################################################################
+# operation system 
+#######################################################################
+def get_os_name():
+    return platform.system();
+
 def is_os_win():
-    return platform.system() == "Windows";
+    return get_os_name() == "Windows";
+
+
+#######################################################################
+# country name and code convertion
+# ISO 3166
+#######################################################################
+def get_country_name_by_alpha2_code(country_alpha2_code):
+    return pycountry.countries.get(alpha_2 = country_alpha2_code).name;
+
+def get_country_name_by_alpha3_code(country_alpha3_code):
+    return pycountry.countries.get(alpha_3 = country_alpha3_code).name;
