@@ -79,3 +79,21 @@ def get_country_name_by_alpha2_code(country_alpha2_code):
 
 def get_country_name_by_alpha3_code(country_alpha3_code):
     return pycountry.countries.get(alpha_3 = country_alpha3_code).name;
+
+def rectify_country_name_for_pyechart(country_name):
+    name_table = {
+        "Russian Federation":"Russia",
+        "Bolivia, Plurinational State of":"Bolivia",
+        "Venezuela, Bolivarian Republic of":"Venezuela",
+        "Viet Nam":"Vietnam",
+        "Lao People's Democratic Republic":"Lao PDR",
+        "Iran, Islamic Republic of":"Iran",
+        "Czechia":"Czech Rep", 
+    }
+
+    if country_name in name_table:
+        return name_table[country_name];
+    else:
+        return country_name;
+
+
