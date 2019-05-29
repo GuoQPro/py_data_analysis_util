@@ -5,6 +5,7 @@ import os;
 import datetime, calendar;
 import platform;
 import pycountry;
+import pandas as pd;
 
 def isstring(value):
     return isinstance(value, str);
@@ -96,4 +97,10 @@ def rectify_country_name_for_pyechart(country_name):
     else:
         return country_name;
 
+
+#######################################################################
+# Convert a pandas series to categorical type
+#######################################################################
+def get_categorical_series(series, possible_category_list):
+    return pd.Categorical(series, categories = possible_category_list, ordered = False)
 
