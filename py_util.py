@@ -6,6 +6,7 @@ import datetime, calendar;
 import platform;
 import pycountry;
 import pandas as pd;
+from .py_macosfile import pickle_load, pickle_dump 
 
 def isstring(value):
     return isinstance(value, str);
@@ -34,14 +35,14 @@ def traverse_folder(root_path):
 # serialize any binary object to a file.
 #######################################################################################################
 def serialize_object(obj, filename):
-    joblib.dump(obj, filename);
+    pickle_dump(obj, filename);
 
 #######################################################################################################
 # deserialize a file into a binary object.
 #######################################################################################################
 def load_object(filename):
     if check_file_existence(filename):
-        return joblib.load(filename);
+        return pickle_load(filename);
     else:
         print("cannot find file %s" % filename);
 
@@ -103,4 +104,3 @@ def rectify_country_name_for_pyechart(country_name):
 #######################################################################
 def get_categorical_series(series, possible_category_list):
     return pd.Categorical(series, categories = possible_category_list, ordered = False)
-

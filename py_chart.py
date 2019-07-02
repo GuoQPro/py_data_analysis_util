@@ -11,7 +11,7 @@ def ChartPie(lable_list, value_list, chart_title = "", radius = None):
     return pie_chart;
 
 def ChartWorldMap(lable_list, value_list, chart_title = "", value_min = 0, value_max = 0):
-	w_map = Map(); #Map(init_opts=opts.InitOpts(theme=ThemeType.LIGHT));
+	w_map = Map(init_opts=opts.InitOpts(theme=ThemeType.DARK));
 	value_pairs = [list(z) for z in zip(lable_list, value_list)];
 	w_map.add("", value_pairs, maptype = "world");
 	w_map.set_global_opts(
