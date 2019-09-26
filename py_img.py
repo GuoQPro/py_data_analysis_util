@@ -13,6 +13,7 @@ def load_img(file_path):
     except IOError as err:
         print("load_img failed: ", err);
     else:
+        img.load();
         return img;
 
     return None;
