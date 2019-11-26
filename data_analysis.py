@@ -5,22 +5,22 @@
 #######################################################################################################
 def set_barplot_value(axis, value_list, value_format, value_color):
     for i, v in enumerate(value_list):
-        bar_label = value_format % v;
-        axis.text(i, v + 1, bar_label, color = value_color, va = 'center');
+        bar_label = value_format % v
+        axis.text(i, v + 1, bar_label, color = value_color, va = 'center')
 
 #######################################################################################################
 # For some specific version of tensorflow and keras, this funcion should be called prior to  
 # using keras using tensorflow gpu backend.
 #######################################################################################################
 def suppress_tensorflow_gpu_with_keras_error():
-    import tensorflow as tf;
-    from keras.backend.tensorflow_backend import set_session;
-    config = tf.ConfigProto();
-    config.gpu_options.allow_growth = True;  # dynamically grow the memory used on the GPU
-    config.log_device_placement = True;  # to log device placement (on which device the operation ran)
+    import tensorflow as tf
+    from keras.backend.tensorflow_backend import set_session
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True  # dynamically grow the memory used on the GPU
+    config.log_device_placement = True  # to log device placement (on which device the operation ran)
                                         # (nothing gets printed in Jupyter, only if you run it standalone)
-    sess = tf.Session(config = config);
-    set_session(sess);  # set this TensorFlow session as the default session for Keras
+    sess = tf.Session(config = config)
+    set_session(sess)  # set this TensorFlow session as the default session for Keras
 
 #######################################################################################################
 # A button used to hide code on jupyter notebook page is added after executing this function.
