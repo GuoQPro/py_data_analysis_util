@@ -5,9 +5,9 @@ from zipfile import ZipFile
 import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 
-def load_img(file_path):
+def load_img(filepath):
     try:
-        img = Image.open(file_path)#mlimg.imread(str(file_path));
+        img = Image.open(filepath).convert("RGB")
     except IOError as err:
         print("load_img failed: ", err)
     else:
@@ -44,8 +44,8 @@ def mask_region(img, polygon, outline_color, fill_color_RGBA):
     draw.polygon(polygon, outline=outline_color, fill=fill_color_RGBA)
     return img
 
-def show_images(img_list, row_num, col_num, title_list = [], show_axe = True):
-    _, axes = plt.subplots(row_num, col_num, squeeze = False)#, figsize = (5, 5))
+def show_images(img_list, row_num, col_num, title_list=[], show_axe=True):
+    _, axes = plt.subplots(row_num, col_num, squeeze=False)#, figsize = (5, 5))
     index = 0
     img_num = len(img_list)
     title_num = len(title_list)
